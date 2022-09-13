@@ -8,6 +8,10 @@ translator = deepl.Translator(auth_key)
 from summarizer import Summarizer,TransformerSummarizer
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
+tokenizer = AutoTokenizer.from_pretrained("google/pegasus-multi_news")
+
+model = AutoModelForSeq2SeqLM.from_pretrained("google/pegasus-multi_news")
+
 @st.cache #decorator
 def translate(text):
   new_text = translator.translate_text(text, target_lang="EN-GB")
@@ -17,6 +21,14 @@ def translate(text):
   final_text = translator.translate_text(result, target_lang="IT")
   return final_text.text
 
+@st.cache
+def translate2(text):
+  new_text = translator.translate_text(text, target_lang="EN-GB")
+  body = new_text.text
+  model = AutoModelForSeq2SeqLM.from_pretrained("google/pegasus-multi_news")
+  result = model(body, min_lenghts=80)
+  final_text = translator.translate_text(result, target_lang="IT")
+  return final_text.text
 
 
 
@@ -35,14 +47,14 @@ def main():
 		st.subheader("Summarize Your Text")
 
 		message = st.text_area("Enter Text","Type Here....")
-		summary_options = st.selectbox("Choose Summarizer",['bert','gpt-2'])
+		summary_options = st.selectbox("Choose Summarizer",['bert','pegasus'])
 		if st.button("Summarize"):
 			if summary_options == 'bert':
 				st.text("Using Bert Summarizer ..")
 				summary_result = translate(message)
-			elif summary_options == 'gpt-2':
-				st.text("Using GPT-2 Summarizer ..")
-				summary_result = "c'hai la mamma puttana"
+			elif summary_options == 'pegasus':
+				st.text("Using Pegasus Summarizer ..")
+				summary_result = translate2(message)
 			else:
 				st.warning("Using Default Summarizer")
 				st.text("Using Gensim Summarizer ..")
