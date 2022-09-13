@@ -18,7 +18,7 @@ def translate(text):
   return final_text.text
 
 
-@st.cache #decorator
+
 
   
 
