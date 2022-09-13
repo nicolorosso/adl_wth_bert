@@ -57,9 +57,13 @@ def main():
 		st.subheader("Sto lavorando anche con altri modelli, per il momento condivido questa demo con BERT ")
 
 		message = st.text_area("Enter Text","Type Here....")
-		summary_options = st.selectbox("Choose Summarizer",['bert','cerchero in settimana di caricare anche altri modelli per avere più confronti su performance'])
+		summary_options = st.selectbox("Choose Summarizer",['bert','cercherò in settimana di caricare anche altri modelli per avere più confronti su performance'])
 		if st.button("Summarize"):
 			if summary_options == 'bert':
+				st.text("Using Bert Summarizer ..")
+				summary_result = translate(message)
+				
+			elif summary_options == 'cercherò in settimana di caricare anche altri modelli per avere più confronti su performance':
 				st.text("Using Bert Summarizer ..")
 				summary_result = translate(message)
 			
