@@ -8,8 +8,6 @@ translator = deepl.Translator(auth_key)
 from summarizer import Summarizer
 from transformers import pipeline
 
-tokenizer = AutoTokenizer.from_pretrained("google/pegasus-multi_news")
-
 
 
 @st.cache #decorator
