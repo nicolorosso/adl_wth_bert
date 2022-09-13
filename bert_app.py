@@ -8,6 +8,7 @@ translator = deepl.Translator(auth_key)
 from summarizer import Summarizer,TransformerSummarizer
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
+@st.cache #decorator
 def translate(text):
   new_text = translator.translate_text(text, target_lang="EN-GB")
   body = new_text.text
