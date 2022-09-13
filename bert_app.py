@@ -26,7 +26,7 @@ def translate(text):
 def translate3(text):
   new_text = translator.translate_text(text, target_lang="EN-GB")
   body = new_text.text
-  model = summarizer("pipeline")
+  model = pipeline("summarization")
   result = model(body, min_length=25, max_length=60)
   final_text = translator.translate_text(result, target_lang="IT")
   return final_text.text
