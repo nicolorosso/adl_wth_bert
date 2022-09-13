@@ -35,7 +35,7 @@ def translate3(text):
 def translate4(text):
   new_text = translator.translate_text(text, target_lang="EN-GB")
   body = new_text.text
-  model = pipeline("summarization", model="t5-base", tokenizer="t5-base", framework="tf")
+  model = pipeline("summarization", model="t5-large", tokenizer="t5-large", framework="tf")
   result = model(body, min_length=25, max_length=60)
   final_text = translator.translate_text(result, target_lang="IT")
   return final_text.text
