@@ -1,3 +1,6 @@
+
+import streamlit as st
+
 import deepl
 auth_key = "9d5d6377-86f6-5862-90e2-783b691526a2:fx" 
 translator = deepl.Translator(auth_key)
