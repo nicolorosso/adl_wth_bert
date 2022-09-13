@@ -17,26 +17,22 @@ def translate(text):
   
 
 def main():
-	""" NLP Based App with Streamlit """
+	
 
 	# Title
 	st.title("Ultimate NLP Application")
 	st.subheader("Natural Language Processing for everyone")
-	st.markdown("""
-    	#### Description
-    	+ This is a Natural Language Processing(NLP) Based App useful for basic NLP task
-    	Tokenization , Lemmatization, Named Entity Recognition (NER), Sentiment Analysis, Text Summarization. Built for social good by [LekanAkin](https://github.com/lekanakin). Click any of the checkboxes to get started.
-    	""")
+	
 
 	# Summarization
 	if st.checkbox("Get the summary of your text"):
 		st.subheader("Summarize Your Text")
 
 		message = st.text_area("Enter Text","Type Here....")
-		summary_options = st.selectbox("Choose Summarizer",['sumy','gensim'])
+		summary_options = st.selectbox("Choose Summarizer",['bert','gensim'])
 		if st.button("Summarize"):
 			if summary_options == 'bert':
-				st.text("Using Sumy Summarizer ..")
+				st.text("Using Bert Summarizer ..")
 				summary_result = translate(message)
 			elif summary_options == 'gensim':
 				st.text("Using Gensim Summarizer ..")
@@ -46,3 +42,7 @@ def main():
 				st.text("Using Gensim Summarizer ..")
 				summary_result = summarize(message)
 			st.success(summary_result)
+
+if __name__ == '__main__':
+	main()
+	
