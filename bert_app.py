@@ -79,7 +79,7 @@ def main():
 				#st.warning("Using Default Summarizer")
 				#st.text("Using Gensim Summarizer ..")
 				#summary_result = translate(message)
-			#st.success(summary_result)
+			st.success(summary_result)
 
 if __name__ == '__main__':
 	main()
