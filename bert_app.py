@@ -18,13 +18,7 @@ def translate(text):
 
 
 @st.cache #decorator
-def translate2(text):
-  new_text = translator.translate_text(text, target_lang="EN-GB")
-  body = new_text.text
-  GPT2_model = TransformerSummarizer(transformer_type="GPT2",transformer_model_key="gpt2-medium")
-  result =  ''.join(GPT2_model(body, min_length=60))
-  final_text = translator.translate_text(result, target_lang="IT")
-  return final_text.text
+
   
 
 def main():
@@ -47,7 +41,7 @@ def main():
 				summary_result = translate(message)
 			elif summary_options == 'gpt-2':
 				st.text("Using GPT-2 Summarizer ..")
-				summary_result = translate2(message)
+				summary_result = "c'hai la mamma puttana"
 			else:
 				st.warning("Using Default Summarizer")
 				st.text("Using Gensim Summarizer ..")
